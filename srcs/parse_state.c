@@ -6,11 +6,11 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 11:57:03 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 12:48:20 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "life.h"
+#include "../includes/life.h"
 
 static void	malloc_extra_line(t_map *map)
 {
@@ -53,9 +53,10 @@ static void	parse_state_line(char *line, t_map *map)
 	map->map[map->lines] = (int *)malloc(sizeof(int) * len);
 	while (line[i] && (line[i] == '.' || line[i] == 'x'))
 	{
-		map->map[map->lines][col++] = ft_atoi(&line[i]);
-		if (map->maxz < map->map[map->lines][col - 1])
-			map->maxz = map->map[map->lines][col - 1];
+		if (line[i] == '.')
+			map->map[map->lines][col++] = '0' - '0';
+		if (line[i] == 'x')
+			map->map[map->lines][col++] = '1' - '0';
 		i++;
 	}
 	map->lines++;
@@ -73,7 +74,6 @@ void	parse_state(char *file, t_map *map)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		exit_msg(3);
-	map->maxz = 1;
 	while (get_next_line(fd, &line) > 0)
 	{
 		malloc_extra_line(map);

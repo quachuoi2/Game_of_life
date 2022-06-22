@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   life.h                                             :+:      :+:    :+:   */
+/*   draw_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 12:47:47 by mrozhnova        ###   ########.fr       */
+/*   Created: 2022/06/22 12:14:58 by mrozhnova         #+#    #+#             */
+/*   Updated: 2022/06/22 12:41:39 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIFE_H
-# define LIFE_H
+#include "../includes/life.h"
 
-// # include <../minilibx/mlx.h>
-
-# include <stdlib.h>
-# include <fcntl.h>
-# include "../libft/libft.h"
-# include <math.h>
-# include <unistd.h>
-# include <stdio.h>
-
-typedef struct s_map
+void	draw_test(t_map *map)
 {
-	int				**map;
-	int				*mapxy;
-	int				cols;
-	int				lines;
-	char			*name;
+	int	i;
+	int	j;
 
-}			t_map;
-
-void	parse_state(char *file, t_map *map);
-void	exit_msg(int code);
-void	draw_test(t_map *map);
-
-#endif
+	i = 0;
+	while (i < map->lines)
+	{
+		j = 0;
+		while (j < map->cols)
+		{
+			printf("%3d", map->map[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}

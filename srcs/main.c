@@ -6,11 +6,11 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:14:00 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 11:47:39 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 12:40:51 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"life.h"
+#include "../includes/life.h"
 
 void	exit_msg(int code)
 {
@@ -39,6 +39,7 @@ int	main(int argc, char **argv)
 	if (!map)
 		exit_msg(2);
 	parse_state(argv[1], map);
+	draw_test(map);
 	// handle_image(map);
 	return (0);
 }
