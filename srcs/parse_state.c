@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 18:03:53 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 18:52:16 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,13 @@
 static void	malloc_extra_line(t_map *map)
 {
 	int	**tmp;
+	int	**tmp_a;
 	int	i;
 
 	tmp = (int **)malloc(sizeof(int *) * (map->lines));
+	tmp_a = (int **)malloc(sizeof(int *) * (map->lines));
 	ft_memcpy(tmp, map->map, sizeof(int **) * map->lines);
+	ft_memcpy(tmp_a, map->map_a, sizeof(int **) * map->lines);
 	if (map->lines)
 		free(map->map);
 	map->map = (int **)malloc(sizeof(int *) * (map->lines + 1));
@@ -40,7 +43,7 @@ static void	malloc_extra_line(t_map *map)
 	while (i < map->lines)
 	{
 		map->map[i] = tmp[i];
-		map->map_a[i] = tmp[i];
+		map->map_a[i] = tmp_a[i];
 		i++;
 	}
 	free(tmp);
