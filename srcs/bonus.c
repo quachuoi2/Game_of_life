@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_test.c                                        :+:      :+:    :+:   */
+/*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 12:14:58 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 16:22:03 by qnguyen          ###   ########.fr       */
+/*   Created: 2022/06/23 00:19:44 by qnguyen           #+#    #+#             */
+/*   Updated: 2022/06/23 00:22:11 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
+#include <time.h>
 
-void	draw_test()
+void	delay(int number_of_seconds)
 {
-	int	i;
-	int	j;
+	int		milli_seconds;
+	clock_t	start_time;
 
-	i = 0;
-	while (i < g_map.lines)
+	milli_seconds = 1000 * number_of_seconds;
+	start_time = clock();
+	while (clock() < start_time + milli_seconds)
+		;
+}
+
+void	infinite_gaming()
+{
+	while(1)
 	{
-		j = 0;
-		while (j < g_map.cols)
-		{
-			printf("%3d", g_map.map[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
+		draw_map(g_map.map);
+		game_of_life();
+		copy_map(g_map.map, temp_map);
+		delay(500);
+		printf("\e[1;1H\e[2J\n");
 	}
 }

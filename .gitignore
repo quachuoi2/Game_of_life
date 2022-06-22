@@ -52,3 +52,5 @@ Mkfile.old
 dkms.conf
 
 line_count
+valout
+game_of_life

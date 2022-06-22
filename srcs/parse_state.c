@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 16:31:05 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/22 22:20:07 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 
 static void parse_line(char *line, int i)
 {
-	int	j;
+	int	j = 0;
+	int	bit_count = 0;
 
-	j = 0;
-	while (line[j])
+	while (*line)
 	{
-		g_map.map[i][j] = (line[j] == 'x' || line[j] == 'X');
-		j++;
+		g_map.map[i][j] = g_map.map[i][j] << 1 | (*line == 'x' || *line == 'X');
+		if (bit_count < MAX_BIT - 1)
+			bit_count++;
+		else
+		{
+			j++;
+			bit_count = 0;
+		}
+		line++;
 	}
 }
 
@@ -28,7 +35,6 @@ void	parse_state(char *file)
 {
 	int		fd;
 	int		i;
-	int		len;
 	char	*line;
 
 	fd = open(file, O_RDONLY);
@@ -39,18 +45,17 @@ void	parse_state(char *file)
 		exit_msg(2);
 
 	i = 0;
-	len = ft_strlen(line);
-	while (*line)
+	g_map.temp_cols = ft_strlen(line);
+	g_map.cols = (g_map.temp_cols / MAX_BIT) + 1;
+	while (i < g_map.lines)
 	{
-		g_map.map[i] = ft_memalloc(len * sizeof(int));
+		g_map.map[i] = ft_memalloc(sizeof(long int) * g_map.cols);
 		parse_line(line, i++);
 		free(line);
 		get_next_line(fd, &line);
 	}
-
+	free(line);
 	g_map.name = ft_strdup(file);
-	g_map.cols = len;
-
 	if (g_map.lines == 0)
 		exit_msg(5);
 

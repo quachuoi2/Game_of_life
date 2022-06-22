@@ -6,7 +6,7 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/20 16:23:50 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/22 13:26:15 by qnguyen          ###   ########.fr        #
+#    Updated: 2022/06/22 20:02:39 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ FLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
-FUNCTIONS	=	ft_strlen		\
+FUNCTIONS	=	ft_greaternum ft_smallernum \
+				ft_strlen		\
 				ft_isalpha		\
 				ft_isdigit		\
 				ft_isalnum		\

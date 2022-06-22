@@ -1,7 +1,5 @@
-wc -l < $1 > line_count
-make
 if [ -z "$1" ] || [ -z "$2" ];  then
     echo "Missing argument(s)"
 else
-	./game_of_life $1 $2
+	./game_of_life $1 $2 $(wc -l < $1)
 fi

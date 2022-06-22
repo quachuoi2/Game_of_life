@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:01:14 by mrozhnov          #+#    #+#             */
-/*   Updated: 2022/06/22 13:53:49 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/22 20:03:28 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ typedef struct s_gnl
 	char			*remain;
 	struct s_gnl	*next;
 }				t_gnl;
+
+int		ft_smallernum(int a, int b);
+int		ft_greaternum(int a, int b);
 
 size_t	ft_strlen(const char *s);
 int		ft_isalpha(int c);
