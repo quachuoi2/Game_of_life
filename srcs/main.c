@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:14:00 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 17:44:38 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 21:16:13 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	if (!map)
 		exit_msg(2);
 	parse_state(argv[1], map);
-	adjasment(map);
+	life(map, argv[2]);
 	draw_test(map);
 	return (0);
 }

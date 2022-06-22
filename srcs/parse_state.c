@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 18:54:17 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 21:11:29 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ static void	malloc_extra_line(t_map *map)
 
 	tmp = (int **)malloc(sizeof(int *) * (map->lines));
 	tmp_a = (int **)malloc(sizeof(int *) * (map->lines));
-	ft_memcpy(tmp, map->map, sizeof(int **) * map->lines);
+	ft_memcpy(tmp, map->map_g, sizeof(int **) * map->lines);
 	ft_memcpy(tmp_a, map->map_a, sizeof(int **) * map->lines);
 	if (map->lines)
-		free(map->map);
-	map->map = (int **)malloc(sizeof(int *) * (map->lines + 1));
+		free(map->map_g);
+	map->map_g = (int **)malloc(sizeof(int *) * (map->lines + 1));
 	map->map_a = (int **)malloc(sizeof(int *) * (map->lines + 1));
 	i = 0;
 	while (i < map->lines)
 	{
-		map->map[i] = tmp[i];
+		map->map_g[i] = tmp[i];
 		map->map_a[i] = tmp_a[i];
 		i++;
 	}
@@ -56,14 +56,14 @@ static void	parse_state_line(char *line, t_map *map)
 	i = 0;
 	col = 0;
 	len = line_len(line);
-	map->map[map->lines] = (int *)malloc(sizeof(int) * len);
+	map->map_g[map->lines] = (int *)malloc(sizeof(int) * len);
 	map->map_a[map->lines] = (int *)malloc(sizeof(int) * len);
 	while (line[i])
 	{
 		if (line[i] == '.')
-			map->map[map->lines][col++] = '0' - '0';
+			map->map_g[map->lines][col++] = '0' - '0';
 		if (line[i] == 'x' || line[i] == 'X')
-			map->map[map->lines][col++] = '1' - '0';
+			map->map_g[map->lines][col++] = '1' - '0';
 		i++;
 	}
 	map->lines++;

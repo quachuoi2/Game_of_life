@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 17:32:38 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 21:21:28 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@
 # include <stdio.h>
 
 # define MAX 1000000
+// # define LIFE 1
 
 typedef struct s_map
 {
-	int				**map;
+	int				**map_g;
 	int				**map_a;
 	int				cols; // i
 	int				lines; // j
@@ -37,5 +38,6 @@ void	parse_state(char *file, t_map *map);
 void	exit_msg(int code);
 void	draw_test(t_map *map);
 void	adjasment(t_map *map);
+void	life(t_map *map, char *str);
 
 #endif
