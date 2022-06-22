@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:45:24 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 21:13:48 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 21:35:20 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	adjasment_9(t_map *map, int i, int j_start, int i_max, int j_max)
 {
 	int	j;
-	int	a;
 
 	while (i <= i_max)
 	{
@@ -45,42 +44,30 @@ void adjasment(t_map *map)
 	map->map_a[lines_index][0] = map->map_g[lines_index - 1][0] + map->map_g[lines_index - 1][1] + map->map_g[lines_index][1];  // segment 3
 	map->map_a[lines_index][cols_index] = map->map_g[lines_index][cols_index - 1] + map->map_g[lines_index - 1][cols_index - 1] + map->map_g[lines_index - 1][cols_index];  // segment 4
 
-	i = 0;
 	j = 1;
-	while (j < cols_index)   // segment 6
+	while (j < cols_index)   // segments 6 && 8
 	{
-		map->map_a[i][j] = map->map_g[i][j - 1] + \
-							map->map_g[i + 1][j - 1] + map->map_g[i + 1][j] + \
-							map->map_g[i + 1][j + 1] + map->map_g[i][j + 1];
+		map->map_a[0][j] = map->map_g[0][j - 1] + \
+							map->map_g[1][j - 1] + map->map_g[1][j] + \
+							map->map_g[1][j + 1] + map->map_g[0][j + 1];
+		map->map_a[lines_index][j] =  map->map_g[lines_index - 1][j + 1] + \
+							map->map_g[lines_index - 1][j] + \
+							map->map_g[lines_index - 1][j - 1] + \
+							map->map_g[lines_index][j - 1] + \
+							map->map_g[lines_index][j + 1];
 		j++;
 	}
-	i = lines_index;
-	j = 1;
-	while (j < cols_index)  // segment 8
-	{
-		map->map_a[i][j] =  map->map_g[i - 1][j + 1] + map->map_g[i - 1][j] + \
-					map->map_g[i - 1][j - 1] + map->map_g[i][j - 1] + \
-					map->map_g[i][j + 1];
-		j++;
-	}
-
 	i = 1;
-	j = 0;
-	while (i < lines_index)  // segment 7
+	while (i < lines_index)  // segment 7 && 5
 	{
-		map->map_a[i][j] =  map->map_g[i - 1][j + 1] + map->map_g[i - 1][j] + \
-							map->map_g[i + 1][j] + map->map_g[i + 1][j + 1] + \
-							map->map_g[i][j + 1];
-		i++;
-	}
-
-	i = 1;
-	j = cols_index;
-	while (i < lines_index) // segment 5
-	{
-		map->map_a[i][j] = map->map_g[i - 1][j] + map->map_g[i - 1][j - 1] + \
-							map->map_g[i][j - 1] + map->map_g[i + 1][j - 1] + \
-							map->map_g[i + 1][j];
+		map->map_a[i][0] =  map->map_g[i - 1][1] + map->map_g[i - 1][0] + \
+							map->map_g[i + 1][0] + map->map_g[i + 1][1] + \
+							map->map_g[i][1];
+		map->map_a[i][cols_index] = map->map_g[i - 1][cols_index] + \
+							map->map_g[i - 1][cols_index - 1] + \
+							map->map_g[i][cols_index - 1] + \
+							map->map_g[i + 1][cols_index - 1] + \
+							map->map_g[i + 1][cols_index];
 		i++;
 	}
 
