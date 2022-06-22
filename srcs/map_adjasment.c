@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:45:24 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 18:46:33 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 19:01:55 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ void adjasment(t_map *map)
 	int	cols_index = map->cols - 1;
 	int	lines_index = map->lines - 1;
 
-	map->map_a[0][0] = 9;  // segment 1
-	map->map_a[0][cols_index] = 0;  // segment 2
-	map->map_a[lines_index][0] = 0;  // segment 3
-	map->map_a[lines_index][cols_index] = 0;  // segment 4
+	map->map_a[0][0] = map->map[0][1] + map->map[1][1] + map->map[1][0];  // segment 1
+	map->map_a[0][cols_index] = map->map[1][cols_index] + map->map[1][cols_index - 1] + map->map[0][cols_index - 1];  // segment 2
+	map->map_a[lines_index][0] = map->map[lines_index - 1][0] + map->map[lines_index - 1][1] + map->map[lines_index][1];  // segment 3
+	map->map_a[lines_index][cols_index] = map->map[lines_index][cols_index - 1] + map->map[lines_index - 1][cols_index - 1] + map->map[lines_index - 1][cols_index];  // segment 4
 
 	i = 0;
 	j = 1;

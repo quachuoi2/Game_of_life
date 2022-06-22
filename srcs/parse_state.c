@@ -6,24 +6,12 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 18:52:16 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 18:54:17 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
 
-// static void	init_map_a(t_map *map)
-// {
-// 	int		i;
-
-// 	i = 0;
-// 	map->map_a = (t_map **)malloc(sizeof(int *) * map->lines + 1);
-// 	while (i < map->lines)
-// 	{
-// 		map->map_a[i] = (t_map *)malloc(sizeof(int) * map->cols);
-// 		i++;
-// 	}
-// }
 
 static void	malloc_extra_line(t_map *map)
 {
