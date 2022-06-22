@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:45:24 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 19:01:55 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 19:19:57 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ void	adjasment_9(t_map *map, int i, int j_start, int i_max, int j_max)
 		j = j_start;
 		while (j <= j_max)
 		{
-			/*map->map_a[i][j]*/ a = map->map[i - 1][j + 1] + map->map[i - 1][j] + \
+			map->map_a[i][j] = map->map[i - 1][j + 1] + map->map[i - 1][j] + \
 							map->map[i - 1][j - 1] + map->map[i][j - 1] + \
 							map->map[i + 1][j - 1] + map->map[i + 1][j] + \
 							map->map[i + 1][j + 1] + map->map[i][j + 1];
 			// printf("%3d\n", map->map_a[i][j]);
-			map->map_a[i][j] = a;
 			j++;
 		}
 		i++;
@@ -48,20 +47,43 @@ void adjasment(t_map *map)
 
 	i = 0;
 	j = 1;
-	while (j < cols_index - 1) // segment 5
-		map->map_a[i][j++] = 0;
+	while (j < cols_index)   // segment 6
+	{
+		map->map_a[i][j] = map->map[i][j - 1] + \
+							map->map[i + 1][j - 1] + map->map[i + 1][j] + \
+							map->map[i + 1][j + 1] + map->map[i][j + 1];
+		j++;
+	}
 	i = lines_index;
 	j = 1;
-	while (j < cols_index - 1)  // segment 7
-		map->map_a[i][j++] = 0;
+	while (j < cols_index)  // segment 8
+	{
+		map->map_a[i][j] =  map->map[i - 1][j + 1] + map->map[i - 1][j] + \
+					map->map[i - 1][j - 1] + map->map[i][j - 1] + \
+					map->map[i][j + 1];
+		j++;
+	}
+
 	i = 1;
 	j = 0;
-	while (i < lines_index - 1)  // segment 8
-		map->map_a[i++][j] = 0;
+	while (i < lines_index)  // segment 7
+	{
+		map->map_a[i][j] =  map->map[i - 1][j + 1] + map->map[i - 1][j] + \
+							map->map[i + 1][j] + map->map[i + 1][j + 1] + \
+							map->map[i][j + 1];
+		i++;
+	}
+
 	i = 1;
 	j = cols_index;
-	while (i < lines_index - 1) // segment 6
-		map->map_a[i++][j] = 0;
+	while (i < lines_index) // segment 5
+	{
+		map->map_a[i][j] = map->map[i - 1][j] + map->map[i - 1][j - 1] + \
+							map->map[i][j - 1] + map->map[i + 1][j - 1] + \
+							map->map[i + 1][j];
+		i++;
+	}
+
 	if (map->cols * map->lines < MAX)
 	{
 		adjasment_9(map, 1, 1, lines_index - 1, cols_index - 1); // segment 9
