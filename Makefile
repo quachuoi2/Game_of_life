@@ -3,21 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+         #
+#    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 10:44:32 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/22 10:44:35 by mrozhnova        ###   ########.fr        #
+#    Updated: 2022/06/22 16:32:11 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=life
-CFILES = main.c parse_state.c
+NAME=game_of_life
+CFILES = main.c parse_state.c draw_test.c
 SRCS=$(addprefix srcs/, $(CFILES))
 OBJS=$(addprefix objs/, $(notdir $(SRCS:.c=.o)))
 INCLUDES= -I includes -I libft
 FLAGS=-Wall -Wextra -Werror
-MLX=-I /usr/local/include -L /usr/local/lib/ -lmlx -framework OpenGL \
--framework Appkit -L minilibx
+MLX=-I /usr/local/include -L /usr/local/lib/ -lmlx -framework -L minilibx
 RUN_LIB=make -C libft/ fclean && make -C libft/
 
 all: $(NAME)
@@ -26,11 +25,14 @@ $(NAME):
 	@$(RUN_LIB)
 	@rm -rf objs
 	@echo Compiling $(NAME)...
-	@gcc $(FLAGS) $(INCLUDES) -c $(SRCS)
+	@gcc -g $(INCLUDES) -c $(SRCS)
 	@mkdir objs
 	@mv $(notdir $(SRCS:.c=.o)) objs
-	@gcc $(FLAGS) $(INCLUDES) $(MLX) -o $(NAME) $(OBJS) libft/libft.a
+	@gcc -g $(INCLUDES) -o $(NAME) $(OBJS) libft/libft.a
 	@echo $(NAME) compiled succesfully!
+
+m:
+	gcc $(INCLUDES) $(SRCS) -o $(NAME) -L libft/ -lft
 
 clean:
 	@/bin/rm -f $(OBJS)

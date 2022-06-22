@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+         #
+#    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/20 16:23:50 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/16 16:20:27 by mrozhnova        ###   ########.fr        #
+#    Updated: 2022/06/22 13:26:15 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ OBJS = $(patsubst %, %.o, $(FUNCTIONS))
 all: $(NAME)
 
 $(NAME): $(FILES)
-	@$(CC) $(FLAGS) -c $(FILES)
+	@$(CC) -c $(FILES)
 	@ar rcs $(NAME) $(OBJS)
 
 clean:

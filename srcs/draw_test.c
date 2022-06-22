@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   draw_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
+/*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:14:58 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 12:41:39 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 16:22:03 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
 
-void	draw_test(t_map *map)
+void	draw_test()
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < map->lines)
+	while (i < g_map.lines)
 	{
 		j = 0;
-		while (j < map->cols)
+		while (j < g_map.cols)
 		{
-			printf("%3d", map->map[i][j]);
+			printf("%3d", g_map.map[i][j]);
 			j++;
 		}
 		printf("\n");

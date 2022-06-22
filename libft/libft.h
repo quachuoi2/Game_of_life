@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
+/*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:01:14 by mrozhnov          #+#    #+#             */
-/*   Updated: 2022/06/16 16:20:07 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 13:53:49 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# define BUFF_SIZE 4096
+# define BUFF_SIZE 100
 
 typedef struct s_list
 {

@@ -3,87 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   parse_state.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
+/*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 12:54:30 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 16:31:05 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
 
-static void	malloc_extra_line(t_map *map)
+static void parse_line(char *line, int i)
 {
-	int	**tmp;
-	int	i;
+	int	j;
 
-	tmp = (int **)malloc(sizeof(int *) * (map->lines));
-	ft_memcpy(tmp, map->map, sizeof(int **) * map->lines);
-	if (map->lines)
-		free(map->map);
-	map->map = (int **)malloc(sizeof(int *) * (map->lines + 1));
-	i = 0;
-	while (i < map->lines)
+	j = 0;
+	while (line[j])
 	{
-		map->map[i] = tmp[i];
-		i++;
+		g_map.map[i][j] = (line[j] == 'x' || line[j] == 'X');
+		j++;
 	}
-	free(tmp);
 }
 
-static int	line_len(char *line)
-{
-	int	count;
-
-	count = 0;
-	while (line[count] == '.' || line[count] == 'x' || line[count] == 'X')
-			count++;
-	return (count);
-}
-
-static void	parse_state_line(char *line, t_map *map)
-{
-	int	i;
-	int	col;
-	int	len;
-
-	i = 0;
-	col = 0;
-	len = line_len(line);
-	map->map[map->lines] = (int *)malloc(sizeof(int) * len);
-	while (line[i] && (line[i] == '.' || line[i] == 'X' || line[i] == 'x'))
-	{
-		if (line[i] == '.')
-			map->map[map->lines][col++] = '0' - '0';
-		if (line[i] == 'x' || line[i] == 'X')
-			map->map[map->lines][col++] = '1' - '0';
-		i++;
-	}
-	map->lines++;
-	map->cols = col;
-}
-
-void	parse_state(char *file, t_map *map)
+void	parse_state(char *file)
 {
 	int		fd;
+	int		i;
+	int		len;
 	char	*line;
 
-	map->name = ft_strdup(file);
-	map->lines = 0;
-	map->cols = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		exit_msg(3);
-	while (get_next_line(fd, &line) > 0)
+
+	if (get_next_line(fd, &line) == -1)
+		exit_msg(2);
+
+	i = 0;
+	len = ft_strlen(line);
+	while (*line)
 	{
-		malloc_extra_line(map);
-		parse_state_line(line, map);
-		if (!line)
-			exit_msg(2);
+		g_map.map[i] = ft_memalloc(len * sizeof(int));
+		parse_line(line, i++);
 		free(line);
+		get_next_line(fd, &line);
 	}
-	if (map->lines == 0)
+
+	g_map.name = ft_strdup(file);
+	g_map.cols = len;
+
+	if (g_map.lines == 0)
 		exit_msg(5);
+
 	if (close(fd) == -1)
 		exit_msg(4);
 }
