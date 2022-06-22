@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:14:00 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 10:43:38 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 11:47:39 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	exit_msg(int code)
 		write(1, "Error: open_file error\n", 23);
 	if (code == 4)
 		write(1, "Error: close_file error\n", 23);
+	if (code == 5)
+		write(1, "Error: map_error\n", 23);
 	exit(0);
 }
 

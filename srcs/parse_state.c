@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 11:02:10 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 11:57:03 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,11 @@ static void	malloc_extra_line(t_map *map)
 
 static int	line_len(char *line)
 {
-	int	i;
 	int	count;
 
-	i = 0;
 	count = 0;
-	if (line[i] != '\n')
-		count++;
+	while (line[count] == '.' || line[count] == 'x')
+			count++;
 	return (count);
 }
 
@@ -53,11 +51,12 @@ static void	parse_state_line(char *line, t_map *map)
 	col = 0;
 	len = line_len(line);
 	map->map[map->lines] = (int *)malloc(sizeof(int) * len);
-	while (line[i])
+	while (line[i] && (line[i] == '.' || line[i] == 'x'))
 	{
 		map->map[map->lines][col++] = ft_atoi(&line[i]);
 		if (map->maxz < map->map[map->lines][col - 1])
 			map->maxz = map->map[map->lines][col - 1];
+		i++;
 	}
 	map->lines++;
 	map->cols = col;
@@ -83,6 +82,8 @@ void	parse_state(char *file, t_map *map)
 			exit_msg(2);
 		free(line);
 	}
+	if (map->lines == 0)
+		exit_msg(5);
 	if (close(fd) == -1)
 		exit_msg(4);
 }

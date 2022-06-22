@@ -6,14 +6,14 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 10:52:06 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 11:05:17 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIFE_H
 # define LIFE_H
 
-# include <../minilibx/mlx.h>
+// # include <../minilibx/mlx.h>
 
 # include <stdlib.h>
 # include <fcntl.h>
