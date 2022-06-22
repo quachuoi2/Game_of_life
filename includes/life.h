@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 15:23:10 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 17:32:38 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef struct s_map
 {
 	int				**map;
 	int				**map_a;
-	int				cols;
-	int				lines;
+	int				cols; // i
+	int				lines; // j
 	char			*name;
 
 }			t_map;
