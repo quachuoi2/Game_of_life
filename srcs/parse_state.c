@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 12:54:30 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 13:15:32 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	parse_state_line(char *line, t_map *map)
 	col = 0;
 	len = line_len(line);
 	map->map[map->lines] = (int *)malloc(sizeof(int) * len);
-	while (line[i] && (line[i] == '.' || line[i] == 'X' || line[i] == 'x'))
+	while (line[i])
 	{
 		if (line[i] == '.')
 			map->map[map->lines][col++] = '0' - '0';
@@ -68,7 +68,7 @@ void	parse_state(char *file, t_map *map)
 	int		fd;
 	char	*line;
 
-	map->name = ft_strdup(file);
+	map->name = ft_strdup(file); // to decide later
 	map->lines = 0;
 	map->cols = 0;
 	fd = open(file, O_RDONLY);

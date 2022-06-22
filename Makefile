@@ -6,18 +6,16 @@
 #    By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 10:44:32 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/22 10:44:35 by mrozhnova        ###   ########.fr        #
+#    Updated: 2022/06/22 13:30:39 by mrozhnova        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=life
-CFILES = main.c parse_state.c
+CFILES = main.c parse_state.c draw_test.c
 SRCS=$(addprefix srcs/, $(CFILES))
 OBJS=$(addprefix objs/, $(notdir $(SRCS:.c=.o)))
 INCLUDES= -I includes -I libft
 FLAGS=-Wall -Wextra -Werror
-MLX=-I /usr/local/include -L /usr/local/lib/ -lmlx -framework OpenGL \
--framework Appkit -L minilibx
 RUN_LIB=make -C libft/ fclean && make -C libft/
 
 all: $(NAME)
@@ -29,7 +27,7 @@ $(NAME):
 	@gcc $(FLAGS) $(INCLUDES) -c $(SRCS)
 	@mkdir objs
 	@mv $(notdir $(SRCS:.c=.o)) objs
-	@gcc $(FLAGS) $(INCLUDES) $(MLX) -o $(NAME) $(OBJS) libft/libft.a
+	@gcc $(FLAGS) $(INCLUDES) -o $(NAME) $(OBJS) libft/libft.a
 	@echo $(NAME) compiled succesfully!
 
 clean:

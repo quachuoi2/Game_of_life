@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:14:00 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 12:40:51 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 13:30:22 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,12 @@ int	main(int argc, char **argv)
 {
 	t_map	*map;
 
-	if (argc != 2)
+	if (argc != 2) // to change to 3
 		exit_msg (1);
 	map = (t_map *)malloc(sizeof(*map));
 	if (!map)
 		exit_msg(2);
 	parse_state(argv[1], map);
 	draw_test(map);
-	// handle_image(map);
 	return (0);
 }

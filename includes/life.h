@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 12:47:47 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 13:17:11 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
-# include <math.h>
-# include <unistd.h>
+# include <unistd.h> // should be delated
 # include <stdio.h>
 
 typedef struct s_map
