@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 12:48:20 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 12:51:52 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ static void	parse_state_line(char *line, t_map *map)
 	col = 0;
 	len = line_len(line);
 	map->map[map->lines] = (int *)malloc(sizeof(int) * len);
-	while (line[i] && (line[i] == '.' || line[i] == 'x'))
+	while (line[i] && (line[i] == '.' || line[i] == 'X' || line[i] == 'x'))
 	{
 		if (line[i] == '.')
 			map->map[map->lines][col++] = '0' - '0';
-		if (line[i] == 'x')
+		if (line[i] == 'x' || line[i] == 'X')
 			map->map[map->lines][col++] = '1' - '0';
 		i++;
 	}
