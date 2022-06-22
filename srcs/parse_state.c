@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 13:15:32 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 15:06:51 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,11 @@ static void	parse_state_line(char *line, t_map *map)
 	map->cols = col;
 }
 
+static void	malloc_extra_line_for_adjasment_map(t_map *map)
+{
+	map->map_a = (int **)malloc(sizeof(int *) * (map->lines + 1));
+}
+
 void	parse_state(char *file, t_map *map)
 {
 	int		fd;
@@ -77,6 +82,7 @@ void	parse_state(char *file, t_map *map)
 	while (get_next_line(fd, &line) > 0)
 	{
 		malloc_extra_line(map);
+		malloc_extra_line_for_adjasment_map(map);
 		parse_state_line(line, map);
 		if (!line)
 			exit_msg(2);

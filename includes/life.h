@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 13:17:11 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 15:23:10 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@
 # include <unistd.h> // should be delated
 # include <stdio.h>
 
+# define MAX 1000000
+
 typedef struct s_map
 {
 	int				**map;
-	int				*mapxy;
+	int				**map_a;
 	int				cols;
 	int				lines;
 	char			*name;
@@ -34,5 +36,6 @@ typedef struct s_map
 void	parse_state(char *file, t_map *map);
 void	exit_msg(int code);
 void	draw_test(t_map *map);
+void	adjasment(t_map *map);
 
 #endif
