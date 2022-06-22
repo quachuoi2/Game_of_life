@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:14:58 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 21:16:27 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 22:30:09 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	draw_test(t_map *map)
 		j = 0;
 		while (j < map->cols)
 		{
-			printf("%3d", map->map_g[i][j]);
+			if (map->map_g[i][j] == 0)
+				printf("%c", '.');
+			else if (map->map_g[i][j] == 1)
+				printf("%c", 'X');
 			j++;
 		}
 		printf("\n");

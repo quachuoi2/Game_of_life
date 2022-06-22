@@ -6,13 +6,13 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 20:42:02 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 21:50:01 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/22 22:25:56 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
 
-static void	generation(t_map *map, double count)
+static int	generation(t_map *map)
 {
 	int	i;
 	int	j;
@@ -39,12 +39,7 @@ static void	generation(t_map *map, double count)
 		}
 		i++;
 	}
-	if (life == 0)
-	{
-		draw_test(map);
-		printf("the life has been stabled after the the %1f iteration", count);
-		exit(0);
-	}
+	return(life);
 }
 
 void	life(t_map *map, char *str)
@@ -53,11 +48,16 @@ void	life(t_map *map, char *str)
 	double	count;
 
 	count = ft_atoi(str);
+	printf("Life is %1.f interations\n", count);
 	i = 0;
 	while (i < count)
 	{
 		adjasment(map);
-		generation(map, i);
+		if (!generation(map))
+		{
+			printf("The Life has been stabled after the the %1.f iteration\n", i);
+			break;
+		}
 		i++;
 	}
 }
