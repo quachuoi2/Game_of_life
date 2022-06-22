@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/06/09 16:02:28 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/22 10:04:34 by mrozhnova        ###   ########.fr        #
+#    Created: 2022/06/22 10:44:32 by mrozhnova         #+#    #+#              #
+#    Updated: 2022/06/22 10:44:35 by mrozhnova        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=life
-CFILES = main.c threads.c
+CFILES = main.c parse_state.c
 SRCS=$(addprefix srcs/, $(CFILES))
 OBJS=$(addprefix objs/, $(notdir $(SRCS:.c=.o)))
 INCLUDES= -I includes -I libft
