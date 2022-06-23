@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 21:11:29 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 14:43:25 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,20 @@ static void	parse_state_line(char *line, t_map *map)
 
 void	parse_state(char *file, t_map *map)
 {
-	int		fd;
+	FILE	*f;
 	char	*line;
+	int		size;
+	int		fd;
 
-	map->name = ft_strdup(file); // to decide later
+	size = 42;
+
 	map->lines = 0;
 	map->cols = 0;
 
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
+	if ((f = fopen(file, "r")) == NULL)
 		exit_msg(3);
+	fd = fileno(f);
+
 	while (get_next_line(fd, &line) > 0)
 	{
 		malloc_extra_line(map);
