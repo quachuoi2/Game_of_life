@@ -12,11 +12,6 @@
 
 #include "../includes/life.h"
 
-int		check_bit(long int num, int n)
-{
-	return (num & (1 << n));
-}
-
 int		check_surrounding(int i, int j, int bit_index)
 {
 	int counter = 0;
@@ -47,6 +42,7 @@ int		check_surrounding(int i, int j, int bit_index)
 		if (check_right_bit(i + 1, j, bit_index))
 			counter++;
 	}
+
 	return (counter);
 }
 
@@ -64,11 +60,15 @@ void	game_of_life()
 		while (j < g_map.cols)
 		{
 			bit_index = 0;
-			while (bit_index < 8)
+			while (bit_index < MAX_BIT)
 			{
 				surrounding = check_surrounding(i, j, bit_index);
-				if ((surrounding != 2 && surrounding != 3 && check_bit(g_map.map[i][j], bit_index))
-					|| (surrounding == 3 && !check_bit(g_map.map[i][j], bit_index)))
+				if (check_bit(g_map.map[i][j], bit_index))
+				{
+					if (surrounding != 2 && surrounding != 3)
+						temp_map[i][j] ^= 1 << bit_index;
+				}
+				else if (surrounding == 3)
 					temp_map[i][j] ^= 1 << bit_index;
 				bit_index++;
 			}

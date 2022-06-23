@@ -6,7 +6,7 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 10:44:32 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/23 15:35:03 by qnguyen          ###   ########.fr        #
+#    Updated: 2022/06/23 19:25:40 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ $(NAME): $(SRCS)
 	echo $(NAME) compiled succesfully!
 
 m:
-	gcc $(INCLUDES) $(SRCS) -o $(NAME) -L libft/ -lft -L. -lftprintf
+	gcc -g $(INCLUDES) $(SRCS) -o $(NAME) -L libft/ -lft -L. -lftprintf
 
 clean:
 	@/bin/rm -f $(OBJS)

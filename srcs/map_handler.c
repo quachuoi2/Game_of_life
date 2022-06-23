@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 23:28:50 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/06/23 00:06:47 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/23 18:50:28 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,42 +24,43 @@ void	create_temp_map()
 
 void	draw_map(long int **mep)
 {
+	//ft_printf("%.*llb\n", MAX_BIT, mep[0][0]);
+	int bit;
 	int	i;
 	int	j;
-	int bit_index;
-	char	*temp_line;
+	char *temp = ft_memalloc(sizeof(*temp) * (MAX_BIT + 1));
 
 	i = 0;
-	temp_line = ft_memalloc(sizeof(char) * (g_map.temp_cols + 1));
 	while (i < g_map.lines)
 	{
 		j = 0;
-		bit_index = 0;
 		while (j < g_map.cols - 1)
 		{
-			//ft_printf("%.*llb", MAX_BIT, mep[i][j]);
-			while (bit_index < g_map.temp_cols)
+			bit = 0;
+			while (bit < MAX_BIT)
 			{
-				if (check_bit(mep[i][j], bit_index))
-					temp_line[g_map.temp_cols - bit_index] = 'x';
+				if (check_bit(mep[i][j], bit))
+					temp[bit] = 'x';
 				else
-					temp_line[g_map.temp_cols - bit_index] = '.';
-				bit_index++;
+					temp[bit] = '.';
+				bit++;
 			}
-			printf("%s", temp_line);
+			printf("%s", temp);
 			j++;
 		}
-		//ft_printf("%.*b", g_map.temp_cols - ((g_map.cols - 1) * MAX_BIT), mep[i][j]);
-		bit_index = 0;
-		while (bit_index <= g_map.temp_cols - ((g_map.cols - 1) * MAX_BIT))
+		ft_bzero(temp, MAX_BIT + 1);
+		bit = 0;
+		int remaining_length = g_map.temp_cols - (g_map.cols - 1) * MAX_BIT;
+		while (bit < remaining_length)
 		{
-			if (check_bit(mep[i][j], bit_index))
-				temp_line[g_map.temp_cols - bit_index - 1] = 'x';
+			if (check_bit(mep[i][j], bit))
+				temp[bit] = 'x';
 			else
-				temp_line[g_map.temp_cols - bit_index - 1] = '.';
-			bit_index++;
+				temp[bit] = '.';
+			bit++;
 		}
-		printf("%s\n", temp_line);
+		printf("%s", temp);
+		printf("\n");
 		i++;
 	}
 }

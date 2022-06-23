@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 15:34:15 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/23 19:43:56 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 # include "libftprintf.h"
-# define MAX_BIT 63
+# define MAX_BIT 32
 typedef struct s_map
 {
 	int				cols;
@@ -50,6 +50,7 @@ void	infinite_gaming();
 void	play_n_turn(char *turn);
 int		check_left_bit(int i, int j, int bit_index);
 int		check_right_bit(int i, int j, int bit_index);
+int		check_surrounding(int i, int j, int bit_index);
 
 
 #endif
