@@ -6,31 +6,36 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 16:46:26 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 16:57:57 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
 
+void	create_map_a(t_map *map)
+{
+	int i;
+
+	i = 0;
+	map->map_a = ft_memalloc(sizeof(long int *) * map->lines);
+	while (i < map->lines)
+		map->map_a[i++] = ft_memalloc(sizeof(long int) * map->cols);
+}
+
 static void	malloc_extra_line(t_map *map)
 {
 	int	**tmp;
-	int	**tmp_a;
 	int	i;
 
 	tmp = (int **)malloc(sizeof(int *) * (map->lines));
-	tmp_a = (int **)malloc(sizeof(int *) * (map->lines));
 	ft_memcpy(tmp, map->map_g, sizeof(int **) * map->lines);
-	ft_memcpy(tmp_a, map->map_a, sizeof(int **) * map->lines);
 	if (map->lines)
 		free(map->map_g);
 	map->map_g = (int **)malloc(sizeof(int *) * (map->lines + 1));
-	map->map_a = (int **)malloc(sizeof(int *) * (map->lines + 1));
 	i = 0;
 	while (i < map->lines)
 	{
 		map->map_g[i] = tmp[i];
-		map->map_a[i] = tmp_a[i];
 		i++;
 	}
 	free(tmp);
@@ -56,7 +61,6 @@ static void	parse_state_line(char *line, t_map *map)
 	col = 0;
 	len = line_len(line);
 	map->map_g[map->lines] = (int *)malloc(sizeof(int) * len);
-	map->map_a[map->lines] = (int *)malloc(sizeof(int) * len);
 	while (line[i])
 	{
 		if (line[i] == '.')
@@ -83,5 +87,6 @@ void	parse_state(char *file, t_map *map)
 		malloc_extra_line(map);
 		parse_state_line(line, map);
 	}
+	create_map_a(map);
 	fclose(f);
 }

@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 16:43:19 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 16:49:57 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <stdio.h>
 
 # define MAX 1000000
-# define BUFF_SIZE 40
+# define BUFF_SIZE 4086
 
 typedef struct s_map
 {
