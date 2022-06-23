@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 14:34:29 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 16:43:19 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdio.h>
 
 # define MAX 1000000
+# define BUFF_SIZE 40
 
 typedef struct s_map
 {
@@ -32,9 +33,10 @@ typedef struct s_map
 
 }			t_map;
 
+void	parse_map(char *file, t_map *map);
 void	parse_state(char *file, t_map *map);
 void	exit_msg(int code);
-void	draw_test(t_map *map);
+void	draw_map(t_map *map);
 void	adjasment(t_map *map);
 void	life(t_map *map, char *str);
 

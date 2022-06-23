@@ -6,12 +6,11 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 14:43:25 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 16:44:49 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
-
 
 static void	malloc_extra_line(t_map *map)
 {
@@ -36,6 +35,7 @@ static void	malloc_extra_line(t_map *map)
 	}
 	free(tmp);
 }
+
 
 static int	line_len(char *line)
 {
@@ -73,29 +73,19 @@ static void	parse_state_line(char *line, t_map *map)
 void	parse_state(char *file, t_map *map)
 {
 	FILE	*f;
-	char	*line;
-	int		size;
-	int		fd;
+	char	line[BUFF_SIZE];
+	int		i;
 
-	size = 42;
+	i = 0;
+	f = fopen(file, "r");
 
-	map->lines = 0;
-	map->cols = 0;
-
-	if ((f = fopen(file, "r")) == NULL)
-		exit_msg(3);
-	fd = fileno(f);
-
-	while (get_next_line(fd, &line) > 0)
+	while (fgets(line, BUFF_SIZE, f))
 	{
 		malloc_extra_line(map);
 		parse_state_line(line, map);
-		if (!line)
-			exit_msg(2);
-		free(line);
+		// free(line);
 	}
-	if (map->lines == 0)
-		exit_msg(5);
-	if (close(fd) == -1)
-		exit_msg(4);
+	// if (map->lines == 0)
+	// 	exit_msg(5);
+	fclose(f);
 }

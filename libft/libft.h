@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:01:14 by mrozhnov          #+#    #+#             */
-/*   Updated: 2022/06/16 16:20:07 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 16:41:37 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# define BUFF_SIZE 4096
 
 typedef struct s_list
 {
@@ -24,13 +23,6 @@ typedef struct s_list
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
-
-typedef struct s_gnl
-{
-	int				fd;
-	char			*remain;
-	struct s_gnl	*next;
-}				t_gnl;
 
 size_t	ft_strlen(const char *s);
 int		ft_isalpha(int c);
@@ -95,7 +87,6 @@ void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstadd(t_list **alst, t_list *new);
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-int		get_next_line(const int fd, char **line);
 char	*ft_strcatfree(char *s1, char *s2);
 char	*ft_itoa_double(long double d, int precision);
 char	*ft_itoa_base_ul(unsigned long n, int base);
