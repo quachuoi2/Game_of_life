@@ -6,27 +6,27 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:45:24 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 22:28:25 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 23:09:38 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
 
-static void	adjasment_9(t_map *map)									// segment 9
+static void	*adjasment_9(t_map9 *map9)									// segment 9
 {
 	int	i;
 	int	j;
 
-	i = map->i_start;
-	while (i <= map->i_max)
+	i = map9->map->i_start;
+	while (i <= map9->map->i_max)
 	{
-		j = map->pos_j.j_start_t;
-		while (j <= map->pos_j.j_max_t)
+		j = map9->j_start_t;
+		while (j <= map9->j_max_t)
 		{
-			map->map_a[i][j] = map->map_g[i - 1][j + 1] + map->map_g[i - 1][j] + \
-							map->map_g[i - 1][j - 1] + map->map_g[i][j - 1] + \
-							map->map_g[i + 1][j - 1] + map->map_g[i + 1][j] + \
-							map->map_g[i + 1][j + 1] + map->map_g[i][j + 1];
+			map9->map->map_a[i][j] = map9->map->map_g[i - 1][j + 1] + map9->map->map_g[i - 1][j] + \
+							map9->map->map_g[i - 1][j - 1] + map9->map->map_g[i][j - 1] + \
+							map9->map->map_g[i + 1][j - 1] + map9->map->map_g[i + 1][j] + \
+							map9->map->map_g[i + 1][j + 1] + map9->map->map_g[i][j + 1];
 			j++;
 		}
 		i++;
@@ -82,8 +82,8 @@ void adjasment(t_map *map)
 
 	t_map9	*map9;
 
-	if (!map9)
-		exit_msg(2);
+	// if (!(map9 == (t_map9 *)sizeof(*map9)))
+	// 	exit_msg(2);
 
 	map->i_start = 1;
 	map->j_start = 1;
@@ -91,8 +91,8 @@ void adjasment(t_map *map)
 	map->j_max = map->cols - 2;
 	if (map->cols * map->lines < MAX)
 	{
-		map9 = (t_map9){1, map->j_max};
-		adjasment_9(map);
+		map9 = &(t_map9){map, 1, map->j_max};
+		adjasment_9(map9);
 	}
 	// else
 	// 	adjasment9_threads(map);
