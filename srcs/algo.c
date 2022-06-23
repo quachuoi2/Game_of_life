@@ -14,21 +14,16 @@
 
 void	game_of_life()
 {
-	int bit_index;
-	int	i;
-	int	j;
-	int surrounding;
-
-	i = 0;
+	int	i = 0;
 	while (i < g_map.lines)
 	{
-		j = 0;
+		int	j = 0;
 		while (j < g_map.cols)
 		{
-			bit_index = 0;
+			int bit_index = 0;
 			while (bit_index < MAX_BIT)
 			{
-				surrounding = check_surrounding(i, j, bit_index);
+				int surrounding = check_surrounding(i, j, bit_index);
 				if (check_bit(g_map.map[i][j], bit_index))
 				{
 					if (surrounding != 2 && surrounding != 3)

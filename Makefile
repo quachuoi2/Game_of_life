@@ -6,17 +6,16 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 10:44:32 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/24 00:29:10 by qnguyen          ###   ########.fr        #
+#    Updated: 2022/06/24 01:47:22 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=game_of_life
-CFILES = main.c parse_state.c free.c algo.c map_handler.c bonus.c bit_check.c
+CFILES = main.c parse_state.c algo.c map_handler.c bonus.c bit_check.c
 SRCS=$(addprefix srcs/, $(CFILES))
 OBJS=$(addprefix objs/, $(notdir $(SRCS:.c=.o)))
 INCLUDES= -I includes -I libft
 FLAGS=-Wall -Wextra -Werror
-MLX=-I /usr/local/include -L /usr/local/lib/ -lmlx -framework -L minilibx
 RUN_LIB=make -C libft/ fclean && make -C libft/
 OPTIMIZATION= -flto -Ofast
 all: $(NAME)
@@ -34,6 +33,7 @@ m:
 
 clean:
 	@/bin/rm -f $(OBJS)
+	@/bin/rm -f $(wildcard *.o)
 	@make -C libft/ clean
 	@echo Clean successful!
 

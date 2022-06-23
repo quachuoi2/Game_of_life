@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 23:28:50 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/06/23 22:58:10 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/24 01:46:45 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	create_temp_map()
 {
 	int i = 0;
 
-	temp_map = ft_memalloc(sizeof(long int *) * g_map.lines);
+	temp_map = ft_memalloc(sizeof(int *) * g_map.lines);
 	while (i < g_map.lines)
-		temp_map[i++] = ft_memalloc(sizeof(long int) * g_map.cols);
+		temp_map[i++] = ft_memalloc(sizeof(int) * g_map.cols);
 }
 
-void	draw_map(long int **mep)
+void	draw_map(int **mep)
 {
 	int bit;
 	int	i;
@@ -62,7 +62,7 @@ void	draw_map(long int **mep)
 	}
 }
 
-void	copy_map(long int **dst, long int **src)
+void	copy_map(int **dst, int **src)
 {
 	int i;
 	int j;

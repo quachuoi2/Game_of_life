@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/24 00:25:56 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/24 01:48:05 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,27 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "../libft/libft.h"
-# define MAX_BIT 32
+# define MAX_BIT 16
 
 typedef struct s_map
 {
-	int				cols;
-	int				temp_cols;
-	int				lines;
-	long int		**map;
+	int	cols;
+	int	temp_cols;
+	int	lines;
+	int	**map;
 
 }			t_map;
 
 extern	t_map g_map;
-extern long int **temp_map;
+extern int **temp_map;
 
 void	parse_state(char *file);
 void	exit_msg(int code);
-void	draw_map(long int **mep);
-void	pnl(int *nl, int len);
-void	free_everything();
+void	draw_map(int **mep);
 void	game_of_life();
-void	copy_map(long int **dst, long int **src);
+void	copy_map(int **dst, int **src);
 void	create_temp_map();
-int		check_bit(long int num, int n);
+int		check_bit(int num, int n);
 void	delay(int number_of_seconds);
 void	infinite_gaming();
 void	play_n_turn(char *turn);

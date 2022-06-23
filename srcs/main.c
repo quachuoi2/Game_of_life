@@ -6,14 +6,14 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:14:00 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/24 00:14:20 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/24 01:46:32 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
 
 t_map	g_map;
-long int **temp_map;
+int **temp_map;
 
 void	exit_msg(int code)
 {
