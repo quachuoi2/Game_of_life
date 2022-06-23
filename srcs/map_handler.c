@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 23:28:50 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/06/23 18:50:28 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/23 22:58:10 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	create_temp_map()
 {
-	int i;
+	int i = 0;
 
-	i = 0;
 	temp_map = ft_memalloc(sizeof(long int *) * g_map.lines);
 	while (i < g_map.lines)
 		temp_map[i++] = ft_memalloc(sizeof(long int) * g_map.cols);
@@ -24,7 +23,6 @@ void	create_temp_map()
 
 void	draw_map(long int **mep)
 {
-	//ft_printf("%.*llb\n", MAX_BIT, mep[0][0]);
 	int bit;
 	int	i;
 	int	j;
@@ -59,8 +57,7 @@ void	draw_map(long int **mep)
 				temp[bit] = '.';
 			bit++;
 		}
-		printf("%s", temp);
-		printf("\n");
+		printf("%s\n", temp);
 		i++;
 	}
 }

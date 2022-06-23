@@ -6,7 +6,7 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 10:44:32 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/23 19:25:40 by qnguyen          ###   ########.fr        #
+#    Updated: 2022/06/24 00:29:10 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,23 +18,22 @@ INCLUDES= -I includes -I libft
 FLAGS=-Wall -Wextra -Werror
 MLX=-I /usr/local/include -L /usr/local/lib/ -lmlx -framework -L minilibx
 RUN_LIB=make -C libft/ fclean && make -C libft/
-
+OPTIMIZATION= -flto -Ofast
 all: $(NAME)
 
 $(NAME): $(SRCS)
 	$(RUN_LIB)
 	echo Compiling $(NAME)...
-	gcc $(INCLUDES) -c $(SRCS)
+	gcc $(INCLUDES) -c $(SRCS) $(OPTIMIZATION)
 	mv $(notdir $(SRCS:.c=.o)) objs
-	gcc $(INCLUDES) -o $(NAME) $(OBJS) libft/libft.a
+	gcc $(INCLUDES) -o $(NAME) $(OBJS) libft/libft.a $(OPTIMIZATION)
 	echo $(NAME) compiled succesfully!
 
 m:
-	gcc -g $(INCLUDES) $(SRCS) -o $(NAME) -L libft/ -lft -L. -lftprintf
+	gcc $(INCLUDES) $(SRCS) -o $(NAME) -L libft/ -lft -L. -lftprintf $(OPTIMIZATION)
 
 clean:
 	@/bin/rm -f $(OBJS)
-	@rm -rf objs
 	@make -C libft/ clean
 	@echo Clean successful!
 

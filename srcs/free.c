@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 20:17:08 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/06/23 00:26:02 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/24 00:26:45 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,4 @@ void	free_everything()
 	while (i < g_map.lines)
 		free(g_map.map[i++]);
 	free(g_map.map);
-	free(g_map.name);
 }
