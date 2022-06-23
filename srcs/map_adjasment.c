@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:45:24 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 20:16:32 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/24 00:29:00 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,9 @@ void adjasment(t_map *map)
 		i++;
 	}
 
-
 	map->i_start = 1;
 	map->j_start = 1;
 	map->i_max = map->lines - 2;
 	map->j_max = map->cols - 2;
-	if (map->cols * map->lines < MAX)
-	{
-		adjasment_9(map);
-	}
-	// else
-	// 	create_threads(t_mlx *mlx);
+	adjasment_9(map);
 }

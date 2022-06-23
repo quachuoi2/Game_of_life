@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 20:12:47 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/24 00:30:25 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	parse_state(char *file, t_map *map)
 			map->cols = line_len(line);
 		malloc_extra_line(map);
 		parse_state_line(line, map);
-		// fgets(line, BUFF_SIZE, f);
 	}
 	create_map_a(map);
 	fclose(f);
