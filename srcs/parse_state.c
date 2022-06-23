@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 16:44:49 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 16:46:26 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	malloc_extra_line(t_map *map)
 	}
 	free(tmp);
 }
-
 
 static int	line_len(char *line)
 {
@@ -83,9 +82,6 @@ void	parse_state(char *file, t_map *map)
 	{
 		malloc_extra_line(map);
 		parse_state_line(line, map);
-		// free(line);
 	}
-	// if (map->lines == 0)
-	// 	exit_msg(5);
 	fclose(f);
 }
