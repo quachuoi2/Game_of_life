@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:14:00 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 16:42:57 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 18:46:18 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	exit_msg(int code)
 		printf("%s\n", "Error: close_file error\n");
 	if (code == 5)
 		printf("%s\n", "Error: map_error\n");
+	if (code == 6)
+		printf("%s\n", "Error: in threads\n");
 	exit(0);
 }
 

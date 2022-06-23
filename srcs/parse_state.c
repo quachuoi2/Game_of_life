@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 17:17:43 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 20:12:47 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,10 @@ static void	parse_state_line(char *line, t_map *map)
 {
 	int	i;
 	int	col;
-	int	len;
 
 	i = 0;
 	col = 0;
-	len = line_len(line);
-	map->map_g[map->lines] = (int *)malloc(sizeof(int) * len);
+	map->map_g[map->lines] = (int *)malloc(sizeof(int) * map->cols);
 	while (line[i])
 	{
 		if (line[i] == '.')
@@ -70,7 +68,6 @@ static void	parse_state_line(char *line, t_map *map)
 		i++;
 	}
 	map->lines++;
-	map->cols = col;
 }
 
 void	parse_state(char *file, t_map *map)
@@ -81,11 +78,18 @@ void	parse_state(char *file, t_map *map)
 
 	i = 0;
 	f = fopen(file, "r");
+	if (f == NULL)
+		exit_msg(3);
 
+	map->cols = 0;
+	map->lines = 0;
 	while (fgets(line, BUFF_SIZE, f))
 	{
+		if (map->cols == 0)
+			map->cols = line_len(line);
 		malloc_extra_line(map);
 		parse_state_line(line, map);
+		// fgets(line, BUFF_SIZE, f);
 	}
 	create_map_a(map);
 	fclose(f);

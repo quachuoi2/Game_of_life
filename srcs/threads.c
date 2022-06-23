@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 19:01:02 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/10 18:31:29 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 17:37:41 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	create_threads(t_mlx *mlx)
 	i = 0;
 	while (i < THREADS)
 	{
-		thread_arr[i].mlx = mlx;
+		thread_arr[i].map = map_a;
 		thread_arr[i].thread = i;
-		ret = pthread_create(&thread_id[i], NULL, draw_fractal, &thread_arr[i]);
+		ret = pthread_create(&thread_id[i], NULL, adjasment_9, &thread_arr[i]);
 		if (ret)
-			exit_msg(3);
+			exit_msg(6);
 		i++;
 	}
 	i = 0;
