@@ -6,13 +6,13 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:45:24 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 23:09:38 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/24 00:01:21 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
 
-static void	*adjasment_9(t_map9 *map9)									// segment 9
+void	*adjasment_9(t_map9 *map9)									// segment 9
 {
 	int	i;
 	int	j;
@@ -89,11 +89,12 @@ void adjasment(t_map *map)
 	map->j_start = 1;
 	map->i_max = map->lines - 2;
 	map->j_max = map->cols - 2;
-	if (map->cols * map->lines < MAX)
+	if (map->cols * map->lines > MAX)
 	{
 		map9 = &(t_map9){map, 1, map->j_max};
 		adjasment_9(map9);
 	}
-	// else
-	// 	adjasment9_threads(map);
+	else
+		adjasment9_threads(map);
+	draw_map_a(map);
 }

@@ -6,12 +6,12 @@
 #    By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 10:44:32 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/23 23:17:41 by mrozhnova        ###   ########.fr        #
+#    Updated: 2022/06/23 23:32:37 by mrozhnova        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=life
-CFILES = main.c parse_state.c draw_map.c map_adjasment.c life.c
+CFILES = main.c parse_state.c draw_map.c map_adjasment.c life.c threads.c
 SRCS=$(addprefix srcs/, $(CFILES))
 OBJS=$(addprefix objs/, $(notdir $(SRCS:.c=.o)))
 INCLUDES= -I includes -I libft
