@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/24 01:10:03 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/24 01:28:07 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@ void	create_map_a(t_map *map)
 	uint8_t	i;
 
 	i = 0;
-	map->map_a = ft_memalloc(sizeof(long int *) * map->lines);
+	map->map_a = ft_memalloc(sizeof(uint8_t *) * map->lines);
 	while (i < map->lines)
-		map->map_a[i++] = ft_memalloc(sizeof(long int) * map->cols);
+		map->map_a[i++] = ft_memalloc(sizeof(uint8_t) * map->cols);
 }
 
 static void	malloc_extra_line(t_map *map)
 {
-	int		**tmp;
-	uint8_t	i;
+	uint8_t	**tmp;
+	uint8_t		i;
 
-	tmp = (int **)malloc(sizeof(int *) * (map->lines));
-	ft_memcpy(tmp, map->map_g, sizeof(int **) * map->lines);
+	tmp = (uint8_t **)malloc(sizeof(uint8_t *) * (map->lines));
+	ft_memcpy(tmp, map->map_g, sizeof(uint8_t **) * map->lines);
 	if (map->lines)
 		free(map->map_g);
-	map->map_g = (int **)malloc(sizeof(int *) * (map->lines + 1));
+	map->map_g = (uint8_t **)malloc(sizeof(uint8_t *) * (map->lines + 1));
 	i = 0;
 	while (i < map->lines)
 	{
@@ -41,9 +41,9 @@ static void	malloc_extra_line(t_map *map)
 	free(tmp);
 }
 
-static uint8_t	line_len(char *line)
+static uint64_t	line_len(char *line)
 {
-	uint8_t	count;
+	uint64_t	count;
 
 	count = 0;
 	while (line[count] != '\n' && (line[count] == '.' || line[count] == 'x' || line[count] == 'X'))
@@ -53,12 +53,12 @@ static uint8_t	line_len(char *line)
 
 static void	parse_state_line(char *line, t_map *map)
 {
-	uint8_t	i;
-	uint8_t	col;
+	uint64_t	i;
+	uint64_t	col;
 
 	i = 0;
 	col = 0;
-	map->map_g[map->lines] = (int *)malloc(sizeof(int) * map->cols);
+	map->map_g[map->lines] = (uint8_t *)malloc(sizeof(uint8_t) * map->cols);
 	while (line[i])
 	{
 		if (line[i] == '.')
@@ -74,9 +74,7 @@ void	parse_state(char *file, t_map *map)
 {
 	FILE	*f;
 	char	line[BUFF_SIZE];
-	uint8_t	i;
 
-	i = 0;
 	f = fopen(file, "r");
 	if (f == NULL)
 		exit_msg(3);

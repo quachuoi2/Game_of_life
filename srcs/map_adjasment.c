@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:45:24 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/24 01:08:45 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/24 01:28:33 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ static void	adjasment_9(t_map *map)									// segment 9
 
 void adjasment(t_map *map)
 {
-	uint8_t	i, j;
+	uint64_t	i, j;
 
-	uint8_t	cols_index = map->cols - 1;
-	uint8_t	lines_index = map->lines - 1;
+	uint64_t	cols_index = map->cols - 1;
+	uint64_t	lines_index = map->lines - 1;
 
 	map->map_a[0][0] = map->map_g[0][1] + \
 						map->map_g[1][1] + \
