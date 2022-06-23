@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 16:57:57 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 17:17:43 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static int	line_len(char *line)
 	int	count;
 
 	count = 0;
-	while (line[count] == '.' || line[count] == 'x' || line[count] == 'X')
-			count++;
+	while (line[count] != '\n' && (line[count] == '.' || line[count] == 'x' || line[count] == 'X'))
+		count++;
 	return (count);
 }
 

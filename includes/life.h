@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 16:49:57 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 16:59:21 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 // # include <../minilibx/mlx.h>
 
 # include <stdlib.h>
-# include <fcntl.h>
 # include "../libft/libft.h"
-# include <unistd.h> // should be delated
 # include <stdio.h>
 
 # define MAX 1000000

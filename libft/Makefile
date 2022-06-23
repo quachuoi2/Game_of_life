@@ -6,7 +6,7 @@
 #    By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/20 16:23:50 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/23 16:41:16 by mrozhnova        ###   ########.fr        #
+#    Updated: 2022/06/23 17:07:33 by mrozhnova        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,10 +48,6 @@ FUNCTIONS	=	ft_strlen		\
 				ft_strncat		\
 \
 				ft_memalloc		\
-				ft_putchar		\
-				ft_putstr		\
-				ft_putendl		\
-				ft_putnbr		\
 				ft_strnew		\
 				ft_strdel		\
 				ft_strclr		\
@@ -59,10 +55,6 @@ FUNCTIONS	=	ft_strlen		\
 				ft_strnequ		\
 				ft_strsub		\
 				ft_strjoin		\
-				ft_putchar_fd	\
-				ft_putstr_fd	\
-				ft_putendl_fd	\
-				ft_putnbr_fd	\
 \
 				ft_memdel		\
 				ft_striter		\
