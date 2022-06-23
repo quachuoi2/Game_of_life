@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 00:23:50 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/23 15:34:15 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,8 @@ int		check_bit(long int num, int n);
 void	delay(int number_of_seconds);
 void	infinite_gaming();
 void	play_n_turn(char *turn);
+int		check_left_bit(int i, int j, int bit_index);
+int		check_right_bit(int i, int j, int bit_index);
+
 
 #endif

@@ -21,37 +21,32 @@ int		check_surrounding(int i, int j, int bit_index)
 {
 	int counter = 0;
 
-	if (check_bit(g_map.map[i][j], bit_index + 1))
+	if (check_left_bit(i, j, bit_index))
 		counter++;
-	if (check_bit(g_map.map[i][j], bit_index - 1))
+	if (check_right_bit(i, j, bit_index))
 		counter++;
+
+//check bits on the row above
 	if (i > 0)
 	{
-		if (check_bit(g_map.map[i - 1][j], bit_index - 1))
+		if (check_left_bit(i - 1, j, bit_index))
 			counter++;
 		if (check_bit(g_map.map[i - 1][j], bit_index))
 			counter++;
-		if (check_bit(g_map.map[i - 1][j], bit_index + 1))
+		if (check_right_bit(i - 1, j, bit_index))
 			counter++;
 	}
+
+//check bits on the row below
 	if (i < g_map.lines - 1)
 	{
-		if (check_bit(g_map.map[i + 1][j], bit_index - 1))
+		if (check_left_bit(i + 1, j, bit_index))
 			counter++;
 		if (check_bit(g_map.map[i + 1][j], bit_index))
 			counter++;
-		if (check_bit(g_map.map[i + 1][j], bit_index + 1))
+		if (check_right_bit(i + 1, j, bit_index))
 			counter++;
 	}
-/* 	if (j > 0)
-	{
-		if (check_bit(g_map.map[i][j - 1], 0))
-			counter++;
-		if (check_bit(g_map.map[i - 1][j - 1], 0))
-			counter++;
-		if (check_bit(g_map.map[i + 1][j - 1], 0))
-			counter++;
-	} */
 	return (counter);
 }
 
@@ -69,7 +64,7 @@ void	game_of_life()
 		while (j < g_map.cols)
 		{
 			bit_index = 0;
-			while (bit_index < g_map.temp_cols)
+			while (bit_index < 8)
 			{
 				surrounding = check_surrounding(i, j, bit_index);
 				if ((surrounding != 2 && surrounding != 3 && check_bit(g_map.map[i][j], bit_index))

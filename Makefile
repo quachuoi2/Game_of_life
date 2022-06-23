@@ -6,12 +6,12 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 10:44:32 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/23 00:21:53 by qnguyen          ###   ########.fr        #
+#    Updated: 2022/06/23 15:35:03 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=game_of_life
-CFILES = main.c parse_state.c free.c algo.c map_handler.c bonus.c
+CFILES = main.c parse_state.c free.c algo.c map_handler.c bonus.c bit_check.c
 SRCS=$(addprefix srcs/, $(CFILES))
 OBJS=$(addprefix objs/, $(notdir $(SRCS:.c=.o)))
 INCLUDES= -I includes -I libft
@@ -23,12 +23,10 @@ all: $(NAME)
 
 $(NAME): $(SRCS)
 	$(RUN_LIB)
-	rm -rf objs
 	echo Compiling $(NAME)...
-	gcc -g $(INCLUDES) -c $(SRCS)
-	mkdir objs
+	gcc $(INCLUDES) -c $(SRCS)
 	mv $(notdir $(SRCS:.c=.o)) objs
-	gcc $(INCLUDES) -o $(NAME) $(OBJS) libft/libft.a libftprintf.a
+	gcc $(INCLUDES) -o $(NAME) $(OBJS) libft/libft.a
 	echo $(NAME) compiled succesfully!
 
 m:
