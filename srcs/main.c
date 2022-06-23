@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:14:00 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 12:40:51 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/24 01:09:04 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,19 @@
 void	exit_msg(int code)
 {
 	if (!code)
-		write(1, "Error\n", 6);
+		printf("%s\n", "Error");
 	if (code == 1)
-		write(1, "Error: add the 1 argument\n", 27);
+		printf("%s\n", "Error: add the argument: the initial state and stage");
 	if (code == 2)
-		write(1, "Error: stack_overflow\n", 23);
+		printf("%s\n", "Error: stack_overflow\n");
 	if (code == 3)
-		write(1, "Error: open_file error\n", 23);
+		printf("%s\n", "Error: open_file error\n");
 	if (code == 4)
-		write(1, "Error: close_file error\n", 23);
+		printf("%s\n", "Error: close_file error\n");
 	if (code == 5)
-		write(1, "Error: map_error\n", 23);
+		printf("%s\n", "Error: map_error\n");
+	if (code == 6)
+		printf("%s\n", "Error: in threads\n");
 	exit(0);
 }
 
@@ -33,13 +35,13 @@ int	main(int argc, char **argv)
 {
 	t_map	*map;
 
-	if (argc != 2)
+	if (argc != 3)
 		exit_msg (1);
 	map = (t_map *)malloc(sizeof(*map));
 	if (!map)
 		exit_msg(2);
 	parse_state(argv[1], map);
-	draw_test(map);
-	// handle_image(map);
+	life(map, argv[2]);
+	draw_map(map);
 	return (0);
 }

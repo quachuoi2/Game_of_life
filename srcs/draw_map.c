@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 01:36:19 by mrozhnova         #+#    #+#             */
-/*   Updated: 2021/11/22 01:36:45 by mrozhnova        ###   ########.fr       */
+/*   Created: 2022/06/22 12:14:58 by mrozhnova         #+#    #+#             */
+/*   Updated: 2022/06/24 01:11:01 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/life.h"
 
-void	ft_putendl_fd(char const *s, int fd)
+void	draw_map(t_map *map)
 {
-	if (!s)
-		return ;
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	uint8_t	i;
+	uint8_t	j;
+
+	i = 0;
+	while (i < map->lines)
+	{
+		j = 0;
+		while (j < map->cols)
+		{
+			if (map->map_g[i][j] == 0)
+				printf("%c", '.');
+			else if (map->map_g[i][j] == 1)
+				printf("%c", 'X');
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 }
