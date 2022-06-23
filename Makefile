@@ -6,7 +6,7 @@
 #    By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 10:44:32 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/23 16:43:47 by mrozhnova        ###   ########.fr        #
+#    Updated: 2022/06/23 23:17:41 by mrozhnova        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,10 @@ $(NAME):
 	@$(RUN_LIB)
 	@rm -rf objs
 	@echo Compiling $(NAME)...
-	@gcc $(FLAGS) $(INCLUDES) -c $(SRCS)
+	@gcc $(INCLUDES) -c $(SRCS)
 	@mkdir objs
 	@mv $(notdir $(SRCS:.c=.o)) objs
-	@gcc $(FLAGS) $(INCLUDES) -o $(NAME) $(OBJS) libft/libft.a
+	@gcc $(INCLUDES) -o $(NAME) $(OBJS) libft/libft.a
 	@echo $(NAME) compiled succesfully!
 
 clean:
