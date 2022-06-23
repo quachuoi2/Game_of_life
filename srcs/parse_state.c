@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/24 00:30:25 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/24 01:10:03 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	create_map_a(t_map *map)
 {
-	int i;
+	uint8_t	i;
 
 	i = 0;
 	map->map_a = ft_memalloc(sizeof(long int *) * map->lines);
@@ -24,8 +24,8 @@ void	create_map_a(t_map *map)
 
 static void	malloc_extra_line(t_map *map)
 {
-	int	**tmp;
-	int	i;
+	int		**tmp;
+	uint8_t	i;
 
 	tmp = (int **)malloc(sizeof(int *) * (map->lines));
 	ft_memcpy(tmp, map->map_g, sizeof(int **) * map->lines);
@@ -41,9 +41,9 @@ static void	malloc_extra_line(t_map *map)
 	free(tmp);
 }
 
-static int	line_len(char *line)
+static uint8_t	line_len(char *line)
 {
-	int	count;
+	uint8_t	count;
 
 	count = 0;
 	while (line[count] != '\n' && (line[count] == '.' || line[count] == 'x' || line[count] == 'X'))
@@ -53,8 +53,8 @@ static int	line_len(char *line)
 
 static void	parse_state_line(char *line, t_map *map)
 {
-	int	i;
-	int	col;
+	uint8_t	i;
+	uint8_t	col;
 
 	i = 0;
 	col = 0;
@@ -74,7 +74,7 @@ void	parse_state(char *file, t_map *map)
 {
 	FILE	*f;
 	char	line[BUFF_SIZE];
-	int		i;
+	uint8_t	i;
 
 	i = 0;
 	f = fopen(file, "r");

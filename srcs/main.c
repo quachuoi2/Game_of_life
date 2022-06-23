@@ -6,30 +6,11 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:14:00 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 18:46:18 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/24 01:09:04 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
-
-// void	draw_map(t_map *map)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = 0;
-// 	while (i < map->lines)
-// 	{
-// 		j = 0;
-// 		while (j < map->cols)
-// 		{
-// 			printf("%3d", map->map_g[i][j]);
-// 			j++;
-// 		}
-// 		printf("\n");
-// 		i++;
-// 	}
-// }
 
 void	exit_msg(int code)
 {

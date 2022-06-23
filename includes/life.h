@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/24 00:30:17 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/24 01:07:58 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ typedef struct s_map
 	int				**map_a;
 	int				cols; // i
 	int				lines; // j
-	int				i_start;
-	int				j_start;
-	int				i_max;
-	int				j_max;
+	uint8_t			i_start;
+	uint8_t			j_start;
+	uint8_t			i_max;
+	uint8_t			j_max;
 
 }					t_map;
 

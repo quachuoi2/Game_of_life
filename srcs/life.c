@@ -6,17 +6,17 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 20:42:02 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 22:34:10 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/24 01:11:44 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
 
-static int	generation(t_map *map)
+static uint8_t	generation(t_map *map)
 {
-	int	i;
-	int	j;
-	int	life;
+	uint8_t	i;
+	uint8_t	j;
+	uint8_t	life;
 
 	life = 0;
 	i = 0;
@@ -44,18 +44,18 @@ static int	generation(t_map *map)
 
 void	life(t_map *map, char *str)
 {
-	double	i;
-	double	count;
+	uint8_t	i;
+	uint8_t	count;
 
 	count = ft_atoi(str);
-	printf("Life has the %1.f interations\n", count);
+	printf("Life has the %1hhu interations\n", count);
 	i = 0;
 	while (i < count)
 	{
 		adjasment(map);
 		if (!generation(map))
 		{
-			printf("The Life has been stabled after the the %1.f iteration\n", i);
+			printf("The Life has been stabled after the the %1hhu iteration\n", i);
 			break;
 		}
 		i++;

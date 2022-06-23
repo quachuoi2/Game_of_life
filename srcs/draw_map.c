@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:14:58 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 16:42:49 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/24 01:11:01 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	draw_map(t_map *map)
 {
-	int	i;
-	int	j;
+	uint8_t	i;
+	uint8_t	j;
 
 	i = 0;
 	while (i < map->lines)
