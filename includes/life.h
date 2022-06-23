@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 18:16:17 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 22:30:03 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@
 # define BUFF_SIZE 1078
 # define THREADS 8
 
+typedef struct s_map9
+{
+	// int			thread;
+	// t_map			pos;
+	// t_map			end;
+	t_map			pos;
+	int				j_start_t;
+	int				j_max_t;
+
+}					t_map9;
+
 typedef struct s_map
 {
 	int				**map_g;
@@ -33,13 +44,16 @@ typedef struct s_map
 	int				j_start;
 	int				i_max;
 	int				j_max;
+	int				pos_j;
 
 }					t_map;
 
 typedef struct s_thread
 {
-	int				thread;
+	// int			thread;
 	t_map			*map;
+	int				j_start_t;
+	int				j_max_t;
 
 }					t_thread;
 

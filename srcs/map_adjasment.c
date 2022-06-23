@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:45:24 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/23 20:16:32 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 22:28:25 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	adjasment_9(t_map *map)									// segment 9
 	i = map->i_start;
 	while (i <= map->i_max)
 	{
-		j = map->j_start;
-		while (j <= map->j_max)
+		j = map->pos_j.j_start_t;
+		while (j <= map->pos_j.j_max_t)
 		{
 			map->map_a[i][j] = map->map_g[i - 1][j + 1] + map->map_g[i - 1][j] + \
 							map->map_g[i - 1][j - 1] + map->map_g[i][j - 1] + \
@@ -80,6 +80,10 @@ void adjasment(t_map *map)
 		i++;
 	}
 
+	t_map9	*map9;
+
+	if (!map9)
+		exit_msg(2);
 
 	map->i_start = 1;
 	map->j_start = 1;
@@ -87,8 +91,9 @@ void adjasment(t_map *map)
 	map->j_max = map->cols - 2;
 	if (map->cols * map->lines < MAX)
 	{
+		map9 = (t_map9){1, map->j_max};
 		adjasment_9(map);
 	}
 	// else
-	// 	create_threads(t_mlx *mlx);
+	// 	adjasment9_threads(map);
 }

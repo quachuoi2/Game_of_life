@@ -6,7 +6,7 @@
 /*   By: mrozhnova <mrozhnova@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 20:42:02 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/22 22:34:10 by mrozhnova        ###   ########.fr       */
+/*   Updated: 2022/06/23 22:10:14 by mrozhnova        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	life(t_map *map, char *str)
 	double	count;
 
 	count = ft_atoi(str);
-	printf("Life has the %1.f interations\n", count);
+	printf("\033[38;5;214mLife has the %1.f interations\033[0m\n", count);
 	i = 0;
 	while (i < count)
 	{
 		adjasment(map);
 		if (!generation(map))
 		{
-			printf("The Life has been stabled after the the %1.f iteration\n", i);
+			printf("\033[38;5;214mThe Life has been stabled after the the %1.f iteration\033[0m\n", i);
 			break;
 		}
 		i++;
