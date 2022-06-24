@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:14:00 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/24 04:52:04 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/24 05:42:22 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,14 @@ void	exit_msg(int code)
 int	main(int argc, char **argv)
 {
 	g_map.lines = atoi(argv[2]);
+
 	g_map.map = ft_memalloc(sizeof(*g_map.map) * g_map.lines);
 	parse_state(argv[1]);
 	int	tomb_map[g_map.lines][g_map.cols];
 	copy_map1(tomb_map, g_map.map);
-	infinite_gaming(tomb_map);
+	if (argc > 3)
+		infinite_gaming(tomb_map, atoi(argv[3]));
+	else
+		infinite_gaming(tomb_map, -1);
 	return (0);
 }

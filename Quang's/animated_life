@@ -1,5 +1,9 @@
 if [ -z "$1" ];  then
     echo "Missing argument(s)"
 else
-	./animation $1 $(wc -l < $1)
+	if [ -z "$2" ];  then
+		./animation $1 $(wc -l < $1)
+	else
+		./animation $1 $(wc -l < $1) $2
+	fi
 fi

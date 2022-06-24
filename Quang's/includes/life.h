@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/24 04:41:37 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/24 05:40:28 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	copy_map2(int **dst, int tomb_map[g_map.lines][g_map.cols]);
 void	create_temp_map();
 //bonus.c
 void	delay(int number_of_seconds);
-void	infinite_gaming(int tomb_map[g_map.lines][g_map.cols]);
+void	infinite_gaming(int tomb_map[g_map.lines][g_map.cols], int i);
 //algo.c
 //void	check_the_middle_guys();
 void	check_top_bottom_border(int tomb_map[g_map.lines][g_map.cols]);
