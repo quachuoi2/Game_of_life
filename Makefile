@@ -6,12 +6,12 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 10:44:32 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/24 01:47:22 by qnguyen          ###   ########.fr        #
+#    Updated: 2022/06/24 03:05:52 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=game_of_life
-CFILES = main.c parse_state.c algo.c map_handler.c bonus.c bit_check.c
+CFILES = main.c parse_state.c algo.c map_handler.c bonus.c abomination.c
 SRCS=$(addprefix srcs/, $(CFILES))
 OBJS=$(addprefix objs/, $(notdir $(SRCS:.c=.o)))
 INCLUDES= -I includes -I libft

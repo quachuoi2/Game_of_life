@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 23:28:50 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/06/24 01:46:45 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/24 03:50:13 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	draw_map(int **mep)
 	}
 }
 
-void	copy_map(int **dst, int **src)
+void	copy_map1(int tomb_map[g_map.lines][g_map.cols], int **src)
 {
 	int i;
 	int j;
@@ -73,7 +73,25 @@ void	copy_map(int **dst, int **src)
 		j = 0;
 		while (j < g_map.cols)
 		{
-			dst[i][j] = src[i][j];
+			tomb_map[i][j] = src[i][j];
+			j++;
+		}
+		i++;
+	}
+}
+
+void	copy_map2(int **dst, int tomb_map[g_map.lines][g_map.cols])
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < g_map.lines)
+	{
+		j = 0;
+		while (j < g_map.cols)
+		{
+			dst[i][j] = tomb_map[i][j];
 			j++;
 		}
 		i++;

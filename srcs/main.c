@@ -6,14 +6,13 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:14:00 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/24 01:46:32 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/24 03:50:52 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
 
 t_map	g_map;
-int **temp_map;
 
 void	exit_msg(int code)
 {
@@ -33,13 +32,12 @@ void	exit_msg(int code)
 int	main(int argc, char **argv)
 {
 	//convert the arg to number and assign that number to map.lines
-	g_map.lines = ft_atoi(argv[3]);
+	g_map.lines = atoi(argv[3]);
 	g_map.map = ft_memalloc(sizeof(*g_map.map) * g_map.lines);
-
 	parse_state(argv[1]);
-	create_temp_map();
-	copy_map(temp_map, g_map.map);
-	play_n_turn(argv[2]);
+	int	tomb_map[g_map.lines][g_map.cols];
+	copy_map1(tomb_map, g_map.map);
+	play_n_turn(argv[2], tomb_map);
 	//infinite_gaming();
 	return (0);
 }
