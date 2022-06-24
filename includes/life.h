@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/24 03:49:52 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/24 04:41:37 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int		check_bit(int num, int n);
 int		check_surrounding(int i, int j, int bit_index);
 int		check_top(int j, int bit_index);
 int		check_bottom(int i, int j, int bit_index);
+
 //main.c
 void	exit_msg(int code);
 

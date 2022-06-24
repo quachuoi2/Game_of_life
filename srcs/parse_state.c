@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/24 00:26:56 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/24 05:08:29 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void parse_line(char *line, int i)
 
 	while (*line != '\n')
 	{
-		if (*line == 'x' || *line == 'X')
+		if (*line == 'x')
 			g_map.map[i][j] ^= 1UL << bit_count;
 		if (bit_count < MAX_BIT - 1)
 			bit_count++;
