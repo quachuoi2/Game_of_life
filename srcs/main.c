@@ -6,13 +6,14 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:14:00 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/24 04:52:11 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/25 12:41:15 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
 
 t_map	g_map;
+int		**temp_map;
 
 void	exit_msg(int code)
 {
@@ -31,11 +32,12 @@ void	exit_msg(int code)
 
 int	main(int argc, char **argv)
 {
+
 	g_map.lines = atoi(argv[3]);
 	g_map.map = ft_memalloc(sizeof(*g_map.map) * g_map.lines);
 	parse_state(argv[1]);
-	int	tomb_map[g_map.lines][g_map.cols];
-	copy_map1(tomb_map, g_map.map);
-	play_n_turn(argv[2], tomb_map);
+	create_temp_map(temp_map);
+	copy_map(temp_map, g_map.map);
+	play_n_turn(argv[2]);
 	return (0);
 }

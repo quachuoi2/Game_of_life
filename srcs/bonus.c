@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 00:19:44 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/06/24 03:50:19 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/25 12:41:06 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	delay(int number_of_seconds)
 		;
 }
 
-void	infinite_gaming(int tomb_map[g_map.lines][g_map.cols])
+void	infinite_gaming()
 {
 	while(1)
 	{
 		draw_map(g_map.map);
-		check_top_bottom_border(tomb_map);
-		check_the_middle_guys(tomb_map);
-		copy_map2(g_map.map, tomb_map);
+		check_top_bottom_border(temp_map);
+		check_the_middle_guys(temp_map);
+		copy_map(g_map.map, temp_map);
 		delay(250);
 		printf("\e[1;1H\e[2J\n");
 	}
