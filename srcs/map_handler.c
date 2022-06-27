@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 23:28:50 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/06/25 09:43:59 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/27 13:04:25 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	create_temp_map()
 {
 	int i = 0;
 
-	temp_map = ft_memalloc(sizeof(int *) * g_map.lines);
-	while (i < g_map.lines)
-		temp_map[i++] = ft_memalloc(sizeof(int) * g_map.cols);
+	temp_map = ft_memalloc(sizeof(int *) * g_data.lines);
+	while (i < g_data.lines)
+		temp_map[i++] = ft_memalloc(sizeof(int) * g_data.cols);
 }
 
 void	draw_map(int **mep)
@@ -29,10 +29,10 @@ void	draw_map(int **mep)
 	char *temp = ft_memalloc(sizeof(*temp) * (MAX_BIT + 1));
 
 	i = 0;
-	while (i < g_map.lines)
+	while (i < g_data.lines)
 	{
 		j = 0;
-		while (j < g_map.cols - 1)
+		while (j < g_data.cols - 1)
 		{
 			bit = 0;
 			while (bit < MAX_BIT)
@@ -48,7 +48,7 @@ void	draw_map(int **mep)
 		}
 		ft_bzero(temp, MAX_BIT + 1);
 		bit = 0;
-		int remaining_length = g_map.temp_cols - (g_map.cols - 1) * MAX_BIT;
+		int remaining_length = g_data.line_len - (g_data.cols - 1) * MAX_BIT;
 		while (bit < remaining_length)
 		{
 			if (check_bit(mep[i][j], bit))
@@ -68,10 +68,10 @@ void	copy_map(int **dst, int **src)
 	int j;
 
 	i = 0;
-	while (i < g_map.lines)
+	while (i < g_data.lines)
 	{
 		j = 0;
-		while (j < g_map.cols)
+		while (j < g_data.cols)
 		{
 			dst[i][j] = src[i][j];
 			j++;

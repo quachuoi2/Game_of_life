@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 00:19:44 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/06/25 12:41:06 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/27 13:05:04 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	infinite_gaming()
 {
 	while(1)
 	{
-		draw_map(g_map.map);
+		draw_map(real_map);
 		check_top_bottom_border(temp_map);
 		check_the_middle_guys(temp_map);
-		copy_map(g_map.map, temp_map);
+		copy_map(real_map, temp_map);
 		delay(250);
 		printf("\e[1;1H\e[2J\n");
 	}

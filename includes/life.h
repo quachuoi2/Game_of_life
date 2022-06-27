@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/25 12:38:36 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/27 13:02:08 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 # define THREAD_COUNT 7
 typedef struct s_map
 {
-	int	cols;
-	int	temp_cols;
-	int	lines;
-	int	**map;
-
+	short int	cols;
+	int			line_len;
+	int			lines;
+	int			remaining_length;
 }			t_map;
 
-extern	t_map g_map;
+extern	t_map g_data;
+extern int **real_map;
 extern int **temp_map;
 
 //parse.c
@@ -41,16 +41,22 @@ void	create_temp_map();
 //bonus.c
 void	delay(int number_of_seconds);
 void	infinite_gaming();
+
 //algo.c
-//void	check_the_middle_guys();
 void	check_top_bottom_border();
 void	check_the_middle_guys();
 void	play_n_turn(char *turn);
+int		check_line(void *i);
+
 //abomination.c
 int		check_bit(int num, int n);
 int		check_surrounding(int i, int j, int bit_index);
+int		check_last_int_surrounding(int i, int j, int bit_index);
 int		check_top(int j, int bit_index);
 int		check_bottom(int i, int j, int bit_index);
+
+//threads.c
+void	multithreading(int i);
 
 //main.c
 void	exit_msg(int code);
