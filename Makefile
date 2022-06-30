@@ -6,13 +6,13 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 10:44:32 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/25 12:28:45 by qnguyen          ###   ########.fr        #
+#    Updated: 2022/06/30 15:20:08 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=game_of_life
 BONUS_NAME=animation
-BASE= main.c parse_state.c algo.c map_handler.c abomination.c
+BASE= main.c parse_state.c algo2.c map_handler.c abomination.c
 BONUS= animation.c parse_state.c algo.c map_handler.c bonus.c abomination.c
 INCLUDES= -I includes -I libft
 RUN_LIB=make -C libft/ fclean && make -C libft/

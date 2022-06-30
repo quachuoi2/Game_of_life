@@ -5,107 +5,24 @@
 #                                                     +:+ +:+         +:+      #
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/20 16:23:50 by mrozhnova         #+#    #+#              #
-#    Updated: 2022/06/22 20:02:39 by qnguyen          ###   ########.fr        #
+#    Created: 2021/10/29 19:02:23 by qnguyen           #+#    #+#              #
+#    Updated: 2022/06/29 17:35:30 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-
-FLAGS = -Wall -Wextra -Werror
-
-CC = gcc
-
-FUNCTIONS	=	ft_greaternum ft_smallernum \
-				ft_strlen		\
-				ft_isalpha		\
-				ft_isdigit		\
-				ft_isalnum		\
-				ft_isascii		\
-				ft_isprint		\
-\
-				ft_toupper		\
-				ft_tolower		\
-				ft_memchr		\
-				ft_strchr		\
-				ft_strrchr		\
-				ft_bzero		\
-\
-				ft_memcpy		\
-				ft_strcpy		\
-				ft_strcat		\
-				ft_strcmp		\
-				ft_strstr		\
-				ft_memmove		\
-				ft_memcmp		\
-\
-				ft_strlcat		\
-				ft_strdup		\
-				ft_atoi			\
-				ft_memccpy		\
-				ft_strnstr		\
-				ft_strncmp		\
-				ft_strncpy		\
-				ft_strncat		\
-\
-				ft_memalloc		\
-				ft_putchar		\
-				ft_putstr		\
-				ft_putendl		\
-				ft_putnbr		\
-				ft_strnew		\
-				ft_strdel		\
-				ft_strclr		\
-				ft_strequ		\
-				ft_strnequ		\
-				ft_strsub		\
-				ft_strjoin		\
-				ft_putchar_fd	\
-				ft_putstr_fd	\
-				ft_putendl_fd	\
-				ft_putnbr_fd	\
-\
-				ft_memdel		\
-				ft_striter		\
-				ft_striteri		\
-				ft_strmap		\
-				ft_strmapi		\
-				ft_strtrim		\
-				ft_strsplit		\
-				ft_itoa			\
-\
-				ft_memset		\
-\
-				ft_whitespace	\
-				ft_strlcpy		\
-				ft_count_words	\
-				ft_count_len	\
-				ft_isspace		\
-\
-				ft_lstnew		\
-				ft_lstdelone	\
-				ft_lstdel		\
-				ft_lstadd		\
-				ft_lstiter		\
-				ft_lstmap		\
-				get_next_line	\
-				ft_strcatfree	\
-				ft_itoa_double	\
-				ft_itoa_base_ul	\
-				ft_strjoinfree
-
-
-FILES = $(patsubst %, %.c, $(FUNCTIONS))
-OBJS = $(patsubst %, %.o, $(FUNCTIONS))
+SRCS = ft_bzero ft_memmove ft_memalloc ft_memset
 
 all: $(NAME)
 
-$(NAME): $(FILES)
-	@$(CC) -c $(FILES)
-	@ar rcs $(NAME) $(OBJS)
+$(NAME): $(addsuffix .o, $(SRCS))
+	ar -rcs $(NAME) $(addsuffix .o, $(SRCS))
+
+.c.o: $(addsuffix .c, $(SRCS)) libft.h
+	gcc $(FLAGS) -c $<
 
 clean:
-	@/bin/rm -f $(OBJS)
+	@/bin/rm -f $(wildcard *.o)
 
 fclean: clean
 	@/bin/rm -f $(NAME)

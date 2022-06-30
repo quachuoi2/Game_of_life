@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 23:28:50 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/06/27 13:04:25 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/30 16:18:49 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,43 @@ void	create_temp_map()
 	temp_map = ft_memalloc(sizeof(int *) * g_data.lines);
 	while (i < g_data.lines)
 		temp_map[i++] = ft_memalloc(sizeof(int) * g_data.cols);
+}
+
+void	create_cell_coord()
+{
+	int i = 0;
+
+	cell_coord = ft_memalloc(sizeof(t_cell_coord *) * g_data.lines);
+	temp_cell_coord = ft_memalloc(sizeof(t_cell_coord *) * g_data.lines);
+	while (i < g_data.lines)
+	{
+		cell_coord[i] = ft_memalloc(sizeof(t_cell_coord) * g_data.line_len);
+		temp_cell_coord[i] = ft_memalloc(sizeof(t_cell_coord) * g_data.line_len);
+
+		int j = 0;
+		//to terminate the loop
+		while (j < g_data.line_len)
+		{
+			temp_cell_coord[i][j].y = -1;
+			cell_coord[i][j].y = -1;
+			j++;
+		}
+		i++;
+	}
+}
+
+void	copy_cell_coords()
+{
+	cell_coord[temp_coord_i][temp_coord_j].y = -1;
+	while(temp_coord_i-- > 0)
+	{
+		while (temp_coord_j-- > 0)
+		{
+			cell_coord[temp_coord_i][temp_coord_j].y = temp_cell_coord[temp_coord_i][temp_coord_j].y;
+			cell_coord[temp_coord_i][temp_coord_j].x = temp_cell_coord[temp_coord_i][temp_coord_j].x;
+			cell_coord[temp_coord_i][temp_coord_j].bit_index = temp_cell_coord[temp_coord_i][temp_coord_j].bit_index;
+		}
+	}
 }
 
 void	draw_map(int **mep)
@@ -46,7 +83,6 @@ void	draw_map(int **mep)
 			printf("%s", temp);
 			j++;
 		}
-		ft_bzero(temp, MAX_BIT + 1);
 		bit = 0;
 		int remaining_length = g_data.line_len - (g_data.cols - 1) * MAX_BIT;
 		while (bit < remaining_length)
@@ -57,6 +93,7 @@ void	draw_map(int **mep)
 				temp[bit] = '.';
 			bit++;
 		}
+		temp[bit] = 0;
 		printf("%s\n", temp);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:24:42 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/27 13:06:21 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/29 18:25:33 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,24 @@
 
 static void parse_line(char *line, int i)
 {
+	static int	cell_y = 0;
+	static int	cell_x = 0;
 	int	j = 0;
 	int	bit_count = 0;
-
 	while (*line != '\n')
 	{
 		if (*line == 'x')
+		{
 			real_map[i][j] ^= 1UL << bit_count;
+			cell_coord[cell_y][cell_x].y = i;
+			cell_coord[cell_y][cell_x].x = j;
+			cell_coord[cell_y][cell_x].bit_index = bit_count;
+			if (++cell_x == g_data.line_len)
+			{
+				cell_x = 0;
+				cell_y++;
+			}
+		}
 		if (bit_count < MAX_BIT - 1)
 			bit_count++;
 		else
@@ -32,22 +43,25 @@ static void parse_line(char *line, int i)
 	}
 }
 
-void	parse_state(char *file)
+void	parse_state(char *file, int line_count)
 {
 	FILE 	*fd;
 	int		i;
-	size_t	size = 420;
+	size_t	size = 42;
 	char	*line = ft_memalloc(sizeof(line) * size);
 
 	fd = fopen(file, "r");
 
+	g_data.lines = line_count;
 	g_data.line_len = getline(&line, &size, fd) - 1;
-	if (g_data.line_len < 0)
-		exit_msg(2);
-
-	i = 0;
 	g_data.cols = (g_data.line_len / MAX_BIT) + 1;
 	g_data.remaining_length = g_data.line_len - (g_data.cols - 1) * MAX_BIT;
+
+	real_map = ft_memalloc(sizeof(*real_map) * g_data.lines);
+	create_temp_map();
+	create_cell_coord();
+
+	i = 0;
 	while (i < g_data.lines)
 	{
 		real_map[i] = ft_memalloc(sizeof(long int) * g_data.cols);

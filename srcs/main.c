@@ -6,15 +6,19 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:14:00 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/27 13:01:47 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/06/30 17:42:34 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/life.h"
 
-t_map	g_data;
-int		**real_map;
-int		**temp_map;
+t_map			g_data;
+int				**real_map;
+int				**temp_map;
+t_cell_coord	**cell_coord;
+t_cell_coord	**temp_cell_coord;
+int				temp_coord_i;
+int				temp_coord_j;
 
 void	exit_msg(int code)
 {
@@ -33,12 +37,9 @@ void	exit_msg(int code)
 
 int	main(int argc, char **argv)
 {
-
-	g_data.lines = atoi(argv[3]);
-	real_map = ft_memalloc(sizeof(*real_map) * g_data.lines);
-	parse_state(argv[1]);
-	create_temp_map(temp_map, real_map);
+	parse_state(argv[1], atoi(argv[3]));
 	copy_map(temp_map, real_map);
-	play_n_turn(argv[2]);
+	play_n_turn_2(argv[2]);
+
 	return (0);
 }

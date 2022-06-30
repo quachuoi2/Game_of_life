@@ -103,15 +103,15 @@ void	check_the_middle_guys()
 
 void	play_n_turn(char *turn)
 {
-	int i = ft_atoi(turn);
+	int i = atoi(turn);
 	while (i--)
 	{
 		//why does this work?
 		check_top_bottom_border(temp_map, real_map, g_data);
 		check_the_middle_guys(temp_map, real_map, g_data);
 		//and is faster than this
-		/* check_top_bottom_border();
-		check_the_middle_guys(); */
+		// check_top_bottom_border();
+		// check_the_middle_guys();
 		copy_map(real_map, temp_map);
 	}
 	draw_map(real_map);
