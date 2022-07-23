@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 09:21:11 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/06/27 09:23:56 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/07/06 15:49:25 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	join_threads(thrd_t threads[THREAD_COUNT])
 		thrd_join(threads[i++], NULL);
 }
 
+//to be implemented
+//current version takes 10x the normal speed
 void	multithreading(int i)
 {
 	thrd_t threads[THREAD_COUNT];

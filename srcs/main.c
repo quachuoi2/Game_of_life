@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:14:00 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/27 13:01:47 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/07/06 15:42:45 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	exit_msg(int code)
 
 int	main(int argc, char **argv)
 {
-
 	g_data.lines = atoi(argv[3]);
 	real_map = ft_memalloc(sizeof(*real_map) * g_data.lines);
 	parse_state(argv[1]);

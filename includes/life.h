@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:15:11 by mrozhnova         #+#    #+#             */
-/*   Updated: 2022/06/27 13:02:08 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/07/24 00:33:04 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	copy_map(int **dst, int **src);
 void	create_temp_map();
 //bonus.c
 void	delay(int number_of_seconds);
-void	infinite_gaming();
+void	infinite_gaming(int i);
 
 //algo.c
 void	check_top_bottom_border();
@@ -50,10 +50,8 @@ int		check_line(void *i);
 
 //abomination.c
 int		check_bit(int num, int n);
-int		check_surrounding(int i, int j, int bit_index);
-int		check_last_int_surrounding(int i, int j, int bit_index);
-int		check_top(int j, int bit_index);
-int		check_bottom(int i, int j, int bit_index);
+int		check_surrounding(int i, int j, int bit_index, int last_int);
+int		check_top_bottom_surrounding(int i, int j, int bit_index, int last_int);
 
 //threads.c
 void	multithreading(int i);
